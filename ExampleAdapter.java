@@ -75,6 +75,8 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
                             mListener.onItemClick(position);
+                            Log.i("LOG ExampleViewHolder", "position: " + position);
+
                         }
                     }
                 }
