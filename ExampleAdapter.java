@@ -2,6 +2,7 @@ package com.example.rdunc.recyclerviewjsonexample;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,8 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
         holder.mTextViewCreator.setText(creatorName);
         holder.mTextViewLikes.setText("Likes: " + likeCount);
+        Log.i("LOG ExampleAdapter", "imageUrl: " + imageUrl);
+
         Picasso.with(mContext).load(imageUrl).fit().centerInside().into(holder.mImageView);
     }
 
