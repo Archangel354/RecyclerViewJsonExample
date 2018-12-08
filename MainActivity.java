@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -38,8 +40,16 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        Spinner mSpinner = (Spinner) findViewById(R.id.spnPopOrRatedOrFavorite);
         mExampleList = new ArrayList<>();
+
+        // For the spinner, Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> spinAdapter = ArrayAdapter.createFromResource(this,
+                R.array.movie_choices, android.R.layout.simple_spinner_item);
+
+        // Specify the layout to use when the list of choices appears
+        spinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(spinAdapter);
 
         mRequestQueue = Volley.newRequestQueue(this);
         parseJSON();
