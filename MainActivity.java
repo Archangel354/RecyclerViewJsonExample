@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         spinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(spinAdapter);
 
-        mRequestQueue = Volley.newRequestQueue(this);
-        parseJSON();
+
 
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -74,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
 
                 } else if (selected.contains("Personal Favorites")){
                     Toast.makeText(MainActivity.this,"Personal Favorites", Toast.LENGTH_SHORT).show();
+                    mRequestQueue = Volley.newRequestQueue(MainActivity.this);
+                    parseJSON();
 
 
                 } else {
