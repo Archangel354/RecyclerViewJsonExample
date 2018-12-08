@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -53,6 +56,34 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
 
         mRequestQueue = Volley.newRequestQueue(this);
         parseJSON();
+
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selected = parent.getItemAtPosition(position).toString();
+
+                if ( selected.contains("Most Popular")){
+                    Toast.makeText(MainActivity.this,"Most Popular", Toast.LENGTH_SHORT).show();
+
+
+
+
+                } else if (selected.contains("Highest Rated")){
+                    Toast.makeText(MainActivity.this,"Highest Rated", Toast.LENGTH_SHORT).show();
+
+
+                } else if (selected.contains("Personal Favorites")){
+                    Toast.makeText(MainActivity.this,"Personal Favorites", Toast.LENGTH_SHORT).show();
+
+
+                } else {
+                    Toast.makeText(MainActivity.this,"No spinner choice executed", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {    }
+        });
     }
 
     private void parseJSON() {
