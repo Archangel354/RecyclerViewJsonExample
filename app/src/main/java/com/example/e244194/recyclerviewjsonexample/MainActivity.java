@@ -3,6 +3,7 @@ package com.example.e244194.recyclerviewjsonexample;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -42,7 +43,9 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
 
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // 1-9-18 mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        GridLayoutManager mGridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
         Spinner mSpinner = (Spinner) findViewById(R.id.spnPopOrRatedOrFavorite);
         mExampleList = new ArrayList<>();
 
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
                     Toast.makeText(MainActivity.this,"Personal Favorites", Toast.LENGTH_SHORT).show();
                     mRequestQueue = Volley.newRequestQueue(MainActivity.this);
                     parseJSON();
+                   // ExampleAdapter myAdapter = new ExampleAdapter(MainActivity.this, )
 
 
                 } else {
